@@ -1,6 +1,7 @@
 {
     "require": {
         "catfan/medoo": "^1.7",
-        "php-di/php-di": "^6.0"
+        "php-di/php-di": "^6.0",
+        "twbs/bootstrap": "4.4.1"
     }
 }

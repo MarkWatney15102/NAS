@@ -1,0 +1,22 @@
+{
+    "login": {
+        "name": "login",
+        "request": {
+            "1": "/login"
+        },
+        "controllerName": "Login",
+        "action": "loginAction",
+        "accessLevel": 0
+    },
+    "home": {
+        "name": "home",
+        "request": {
+            "1": "/",
+            "2": "/home",
+            "3": "/dashboard"
+        },
+        "controllerName": "Home",
+        "action": "homeAction",
+        "accessLevel": 50
+    }
+}

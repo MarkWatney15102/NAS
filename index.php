@@ -1,7 +1,13 @@
 <?php 
 
-require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
+require $_SERVER['DOCUMENT_ROOT'] . "/autoloader.php";
 
-$includeDir = [
+use config\Config\Config;
+use src\Service\Routing\Routing;
+use src\Models\UserModel\UserModel;
 
-];
+$config = Config::getInstance();
+$config->init();
+
+$routing = new Routing();
+$routing->rout($config->getRoutes());

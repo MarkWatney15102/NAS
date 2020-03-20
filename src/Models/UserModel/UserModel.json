@@ -1,0 +1,33 @@
+{
+    "tableName": "user",
+    "pk": "id",
+    "mapping": {
+        "id": {
+            "mapTo": "id"
+        },
+        "username": {
+            "mapTo": "username"
+        },
+        "password": {
+            "mapTo": "password"
+        },
+        "firstname": {
+            "mapTo": "firstname"
+        },
+        "surename": {
+            "mapTo": "surename"
+        },
+        "email": {
+            "mapTo": "regMail"
+        },
+        "active": {
+            "mapTo": "active"
+        },
+        "online": {
+            "mapTo": "online"
+        },
+        "create_time": {
+            "mapTo": "createTime"
+        }
+    }
+}
