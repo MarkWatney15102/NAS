@@ -1,13 +1,13 @@
 <?php
 
-namespace src\Structure\AbstractModel;
+namespace src\Structure\AbstractModelContainer;
 
 use src\Helper\Singleton\Singleton;
 use src\Service\JsonParser\JsonParser;
 use src\Structure\Database\Database;
 
-abstract class AbstractModel extends Singleton
-{
+abstract class AbstractModelContainer extends Singleton
+{   
     /**
      * @var array
      */
@@ -19,38 +19,21 @@ abstract class AbstractModel extends Singleton
     private $result;
 
     /**
-     * @var Medoo
+     * @param $condition array -> dbfields
      */
-    private $db;
-
-    /**
-     * @var array
-     */
-    private $primaryKey;
-
-    /**
-     * @var string
-     */
-    private $tableName;
-
-    public function read(string $primaryKey) 
+    public function findOneBy(array $condition)
     {
         $db = Database::getInstance()->getConnection();
-        $this->db = $db;
 
         $class = get_called_class();
         $split = explode("\\", $class);
         $class = $split[3];
+        $class = str_replace("Container", "", $class);
 
         $schemaPath = $_SERVER['DOCUMENT_ROOT'] . "/src/Models/{$class}/{$class}.json";
 
         $schema = JsonParser::parseJsonFile($schemaPath);
-
         $tableName = $schema->tableName;
-        $pk = $schema->pk;
-
-        $this->tableName = $tableName;
-        $this->primaryKey[$pk] = $primaryKey;
 
         $finalMapping = [];
 
@@ -59,13 +42,9 @@ abstract class AbstractModel extends Singleton
             $finalMapping[] = $tableCollumn;
         }
 
-        $result = $this->db->select($tableName, 
-        $finalMapping,
-        [
-            $pk => $primaryKey
-        ]);
+        $data = $db->select($tableName, $finalMapping, $condition);
 
-        $this->result = $result[0];
+        $this->result = $data[0];
     }
 
     public function getProp(string $propName)
@@ -79,19 +58,5 @@ abstract class AbstractModel extends Singleton
         }
 
         return $value;
-    }
-
-    public function setProp(string $propName, string $value) 
-    {
-        foreach ($this->mapping as $tableName => $mapping) {
-            if ((string)$mapping->mapTo === (string)$propName) {
-                $this->result[$tableName] = $value;
-            }
-        }
-    }
-
-    public function update()
-    {
-        $this->db->update($this->tableName, $this->result, $this->primaryKey);
     }
 }

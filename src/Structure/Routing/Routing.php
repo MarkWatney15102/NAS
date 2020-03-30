@@ -1,6 +1,6 @@
 <?php 
 
-namespace src\Service\Routing;
+namespace src\Structure\Routing;
 
 use src\Service\LoginChecker\LoginChecker;
 
@@ -35,5 +35,13 @@ class Routing
                 }
             }
         }
+    }
+
+    public static function getSubroutingCount()
+    {
+        $routSeperation = explode("/", $_SERVER['REQUEST_URI']);
+        unset($routSeperation[0]);
+
+        return count($routSeperation);
     }
 }

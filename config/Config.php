@@ -2,7 +2,7 @@
 
 namespace config\Config;
 
-use src\Service\Singleton\Singleton;
+use src\Helper\Singleton\Singleton;
 use src\Service\JsonParser\JsonParser;
 
 class Config extends Singleton

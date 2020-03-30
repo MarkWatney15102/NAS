@@ -3,7 +3,7 @@
 namespace src\Structure\Database;
 
 use Medoo\Medoo;
-use src\Service\Singleton\Singleton;
+use src\Helper\Singleton\Singleton;
 
 class Database extends Singleton
 {

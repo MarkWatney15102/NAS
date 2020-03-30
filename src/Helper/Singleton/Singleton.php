@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Service\Singleton;
+namespace src\Helper\Singleton;
 
 abstract class Singleton 
 {
