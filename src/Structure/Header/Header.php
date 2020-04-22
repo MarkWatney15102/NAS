@@ -2,6 +2,7 @@
 
 namespace src\Structure\Header;
 
+use Medoo\Medoo;
 use src\Structure\Database\Database;
 use src\Structure\Routing\Routing;
 use src\Service\Includer\Includer;
@@ -29,9 +30,13 @@ class Header
         $includeFolder = "/src/dist/js";
         $path = $_SERVER['DOCUMENT_ROOT'] . $includeFolder;
 
+        Includer::includeJsFile($this->pathToFilePartOne . "src/dist/js/jquery.min.js");
+
         foreach (glob("{$path}/*.js") as $filename) {
-            $file = explode("/", $filename);
-            Includer::includeJsFile($this->pathToFilePartOne . "src/dist/js/". end($file));
+            if (!strpos($filename, "jquery.min.js")) {
+                $file = explode("/", $filename);
+                Includer::includeJsFile($this->pathToFilePartOne . "src/dist/js/". end($file));
+            }
         }
     }
 

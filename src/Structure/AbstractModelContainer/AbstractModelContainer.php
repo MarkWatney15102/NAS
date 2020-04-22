@@ -2,6 +2,7 @@
 
 namespace src\Structure\AbstractModelContainer;
 
+use Medoo\Medoo;
 use src\Helper\Singleton\Singleton;
 use src\Service\JsonParser\JsonParser;
 use src\Structure\Database\Database;
@@ -23,6 +24,7 @@ abstract class AbstractModelContainer extends Singleton
      */
     public function findOneBy(array $condition)
     {
+        /** @var Medoo $db */
         $db = Database::getInstance()->getConnection();
 
         $class = get_called_class();
@@ -47,6 +49,33 @@ abstract class AbstractModelContainer extends Singleton
         $this->result = $data[0];
     }
 
+    public function findAllBy(array $condition)
+    {
+        /** @var Medoo $db */
+        $db = Database::getInstance()->getConnection();
+
+        $class = get_called_class();
+        $split = explode("\\", $class);
+        $class = $split[3];
+        $class = str_replace("Container", "", $class);
+
+        $schemaPath = $_SERVER['DOCUMENT_ROOT'] . "/src/Models/{$class}/{$class}.json";
+
+        $schema = JsonParser::parseJsonFile($schemaPath);
+        $tableName = $schema->tableName;
+
+        $finalMapping = [];
+
+        foreach ($schema->mapping as $tableCollumn => $mapping) {
+            $this->mapping[$tableCollumn] = $mapping;
+            $finalMapping[] = $tableCollumn;
+        }
+
+        $data = $db->select($tableName, $finalMapping, $condition);
+
+        $this->result = $data;
+    }
+
     public function getProp(string $propName)
     {
         $value = '';
@@ -58,5 +87,10 @@ abstract class AbstractModelContainer extends Singleton
         }
 
         return $value;
+    }
+
+    public function getAllProps()
+    {
+        return $this->result;
     }
 }

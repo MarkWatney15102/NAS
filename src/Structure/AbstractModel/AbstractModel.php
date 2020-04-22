@@ -2,6 +2,7 @@
 
 namespace src\Structure\AbstractModel;
 
+use Medoo\Medoo;
 use src\Helper\Singleton\Singleton;
 use src\Service\JsonParser\JsonParser;
 use src\Structure\Database\Database;
@@ -33,7 +34,7 @@ abstract class AbstractModel extends Singleton
      */
     private $tableName;
 
-    public function read(string $primaryKey) 
+    public function read(string $primaryKey)
     {
         $db = Database::getInstance()->getConnection();
         $this->db = $db;
@@ -59,11 +60,13 @@ abstract class AbstractModel extends Singleton
             $finalMapping[] = $tableCollumn;
         }
 
-        $result = $this->db->select($tableName, 
-        $finalMapping,
-        [
-            $pk => $primaryKey
-        ]);
+        $result = $this->db->select(
+            $tableName,
+            $finalMapping,
+            [
+                $pk => $primaryKey
+            ]
+        );
 
         $this->result = $result[0];
     }
@@ -81,7 +84,7 @@ abstract class AbstractModel extends Singleton
         return $value;
     }
 
-    public function setProp(string $propName, string $value) 
+    public function setProp(string $propName, string $value)
     {
         foreach ($this->mapping as $tableName => $mapping) {
             if ((string)$mapping->mapTo === (string)$propName) {

@@ -1,6 +1,13 @@
 {
+    "name": "markwatney/nas",
+    "authors": [
+        {
+            "name": "MarkWatney15102",
+            "email": "eikewientjes882@gmail.com"
+        }
+    ],
     "require": {
         "catfan/medoo": "^1.7",
-        "php-di/php-di": "^6.0"
+        "squizlabs/php_codesniffer": "^3.5"
     }
 }

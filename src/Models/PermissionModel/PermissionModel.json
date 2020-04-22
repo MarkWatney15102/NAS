@@ -1,0 +1,15 @@
+{
+    "tableName": "permissions",
+    "pk": "id",
+    "mapping": {
+        "id": {
+            "mapTo": "id"
+        },
+        "name": {
+            "mapTo": "name"
+        },
+        "description": {
+            "mapTo": "description"
+        }
+    }
+}

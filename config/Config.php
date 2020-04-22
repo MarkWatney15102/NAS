@@ -3,7 +3,10 @@
 namespace config\Config;
 
 use src\Helper\Singleton\Singleton;
+use src\Service\CurrentUser\CurrentUser;
 use src\Service\JsonParser\JsonParser;
+use src\Service\LoginChecker\LoginChecker;
+use src\Structure\Permission\Permissions\Permissions;
 
 class Config extends Singleton
 {
@@ -16,6 +19,10 @@ class Config extends Singleton
     public function init(): void
     {
         $this->loadRoutes();
+
+        if (LoginChecker::isUserLoggedIn()) {
+            $permissions = new Permissions($_COOKIE['UID']);
+        }
     }
 
     private function loadRoutes(): void
@@ -24,9 +31,9 @@ class Config extends Singleton
 
         foreach ($routes as $route) {
             $this->routes[$route->name] = [
-                "request" => $route->request, 
-                "controllerName" => $route->controllerName, 
-                "action" => $route->action, 
+                "request" => $route->request,
+                "controllerName" => $route->controllerName,
+                "action" => $route->action,
                 "accessLevel" => $route->accessLevel
             ];
         }

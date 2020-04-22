@@ -1,0 +1,12 @@
+{
+    "tableName": "user_permissions",
+    "pk": "user_id",
+    "mapping": {
+        "user_id": {
+            "mapTo": "user_id"
+        },
+        "permission_id": {
+            "mapTo": "permissionId"
+        }
+    }
+}

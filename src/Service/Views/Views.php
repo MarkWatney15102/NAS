@@ -2,7 +2,9 @@
 
 namespace src\Service\Views;
 
-class Views 
+use src\Service\LoginChecker\LoginChecker;
+
+class Views
 {
     public static function load(string $path)
     {

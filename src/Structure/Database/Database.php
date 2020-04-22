@@ -11,7 +11,7 @@ class Database extends Singleton
     {
         return new Medoo([
             'database_type' => 'mysql',
-            'database_name' => 'noname',
+            'database_name' => 'nas',
             'server' => 'localhost',
             'username' => 'root',
             'password' => '',

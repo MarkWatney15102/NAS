@@ -13,7 +13,7 @@ $includeDir = [
 ];
 
 foreach ($includeDir as $key => $folder) {
-    $directories = glob($folder . '/*' , GLOB_ONLYDIR);
+    $directories = glob($folder . '/*', GLOB_ONLYDIR);
     foreach ($directories as $directorie) {
         foreach (glob("{$directorie}/*.php") as $filename) {
             include $filename;
