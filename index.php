@@ -22,11 +22,11 @@ use src\Structure\Header\Header;
 </head>
 <body>
 <?php
-$routing = new Routing();
-$routing->rout($config->getRoutes());
-
 $heading = new Heading();
 $heading->loadHeading();
+
+$routing = new Routing($config->getRoutes());
+$routing->rout();
 
 ?>
 </body>

@@ -1,0 +1,45 @@
+<?php
+    $params = $_SESSION['params'];
+    $accounts = $params['accounts'];
+?>
+<div class="container-fluid">
+    <div class="col-lg-12">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    foreach ($accounts as $account) {
+                    ?>
+                        <tr>
+                            <td><?= $account['id'] ?></td>
+                            <td><?= $account['username'] ?></td>
+                            <td><?= $account['firstname'] ?></td>
+                            <td><?= $account['lastname'] ?></td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/admin/account/<?= $account['id'] ?>">View Profile</a>
+                                        <a class="dropdown-item" href="#">Disable User</a>
+                                        <a class="dropdown-item" href="#">Delete User</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>

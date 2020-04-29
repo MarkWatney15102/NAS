@@ -17,7 +17,7 @@ abstract class AbstractModel extends Singleton
     /**
      * @var array
      */
-    private $result;
+    protected $result;
 
     /**
      * @var Medoo
@@ -55,9 +55,9 @@ abstract class AbstractModel extends Singleton
 
         $finalMapping = [];
 
-        foreach ($schema->mapping as $tableCollumn => $mapping) {
-            $this->mapping[$tableCollumn] = $mapping;
-            $finalMapping[] = $tableCollumn;
+        foreach ($schema->mapping as $tableColumn => $mapping) {
+            $this->mapping[$tableColumn] = $mapping;
+            $finalMapping[] = $tableColumn;
         }
 
         $result = $this->db->select(

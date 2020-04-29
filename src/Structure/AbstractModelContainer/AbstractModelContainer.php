@@ -22,7 +22,7 @@ abstract class AbstractModelContainer extends Singleton
     /**
      * @param $condition array -> dbfields
      */
-    public function findOneBy(array $condition)
+    public function findOneBy(array $condition = [])
     {
         /** @var Medoo $db */
         $db = Database::getInstance()->getConnection();
@@ -49,7 +49,7 @@ abstract class AbstractModelContainer extends Singleton
         $this->result = $data[0];
     }
 
-    public function findAllBy(array $condition)
+    public function findAllBy(array $condition = [])
     {
         /** @var Medoo $db */
         $db = Database::getInstance()->getConnection();

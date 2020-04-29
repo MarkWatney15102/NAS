@@ -18,5 +18,24 @@
         "controllerName": "Home",
         "action": "homeAction",
         "accessLevel": 50
+    },
+    "accountlist": {
+        "name": "accountlist",
+        "request": {
+            "1": "/admin/accountlist"
+        },
+        "controllerName": "AccountList",
+        "action": "AccountListingAction",
+        "accessLevel": 300
+    },
+    "accountProfile": {
+        "name": "accountProfile",
+        "request": {
+            "1": "/admin/account/"
+        },
+        "controllerName": "AccountProfile",
+        "action": "AccountUserAction",
+        "paramPattern": "^\\d+",
+        "accessLevel": 300
     }
 }

@@ -14,8 +14,8 @@
         "firstname": {
             "mapTo": "firstname"
         },
-        "surename": {
-            "mapTo": "surename"
+        "lastname": {
+            "mapTo": "lastname"
         },
         "email": {
             "mapTo": "regMail"

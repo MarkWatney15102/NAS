@@ -3,7 +3,6 @@
 namespace src\Structure\Permission\Permissions;
 
 use Medoo\Medoo;
-use src\Models\UserPermissionModel\UserPermissionModel;
 use src\Models\UserPermissionModel\UserPermissionModelContainer;
 use src\Structure\Database\Database;
 
@@ -24,6 +23,10 @@ class Permissions
      */
     private $userPermissions;
 
+    /**
+     * Permissions constructor.
+     * @param int $userId
+     */
     public function __construct(int $userId)
     {
         $this->db = Database::getInstance()->getConnection();
@@ -32,7 +35,7 @@ class Permissions
         $this->setUserPermissions();
     }
 
-    private function setUserPermissions()
+    private function setUserPermissions(): void
     {
         $userPermission = UserPermissionModelContainer::getInstance();
         $userPermission->findAllBy(["user_id" => $this->userId]);
@@ -40,7 +43,10 @@ class Permissions
         $this->userPermissions = $userPermission->getAllProps();
     }
 
-    public function getUserPermissions()
+    /**
+     * @return array
+     */
+    public function getUserPermissions(): array
     {
         return $this->userPermissions;
     }

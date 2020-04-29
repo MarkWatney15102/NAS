@@ -3,7 +3,6 @@
 namespace config\Config;
 
 use src\Helper\Singleton\Singleton;
-use src\Service\CurrentUser\CurrentUser;
 use src\Service\JsonParser\JsonParser;
 use src\Service\LoginChecker\LoginChecker;
 use src\Structure\Permission\Permissions\Permissions;
@@ -39,7 +38,10 @@ class Config extends Singleton
         }
     }
 
-    public function getRoutes()
+    /**
+     * @return array
+     */
+    public function getRoutes(): array
     {
         return $this->routes;
     }

@@ -11,15 +11,28 @@ class Routing
      */
     protected $uri;
 
-    public function __construct()
+    /**
+     * @var array
+     */
+    protected $routes;
+
+    /**
+     * Routing constructor.
+     * @param array $routes
+     */
+    public function __construct(array $routes)
     {
         $this->uri = $_SERVER['REQUEST_URI'];
+        $this->routes = $routes;
     }
 
-    public function rout(array $routes) 
+    public function rout(): void
     {
-        foreach($routes as $route) {
+        preg_match("/\d+/", $this->uri, $matches);
+        $param = $matches[0] ?? "";
+        foreach($this->routes as $route) {
             foreach ($route['request'] as $request) {
+                $this->uri = preg_replace("/\d+/", "", $this->uri);
                 if ((string)$request === (string)$this->uri) {
                     $controllerName = $route['controllerName'];
                     $action = $route['action'];
@@ -29,7 +42,7 @@ class Routing
 
                     $class = "\\src\\Controller\\{$controllerName}\\{$controllerName}";
                     $controller = new $class;
-                    $controller->$action();
+                    $controller->$action($param);
                 } else {
                     continue;
                 }
@@ -37,11 +50,14 @@ class Routing
         }
     }
 
-    public static function getSubroutingCount()
+    /**
+     * @return int
+     */
+    public static function getSubroutingCount(): int
     {
-        $routSeperation = explode("/", $_SERVER['REQUEST_URI']);
-        unset($routSeperation[0]);
+        $routSeparation = explode("/", $_SERVER['REQUEST_URI']);
+        unset($routSeparation[0]);
 
-        return count($routSeperation);
+        return count($routSeparation);
     }
 }
