@@ -1,0 +1,24 @@
+{
+  "tableName": "user_file_uploads",
+  "pk": "user_id",
+  "mapping": {
+    "id": {
+      "mapTo": "id"
+    },
+    "user_id": {
+      "mapTo": "user_id"
+    },
+    "title": {
+      "mapTo": "title"
+    },
+    "mimetype": {
+      "mapTo": "mimetype"
+    },
+    "filename": {
+      "mapTo": "filename"
+    },
+    "create_time": {
+      "mapTo": "create_time"
+    }
+  }
+}

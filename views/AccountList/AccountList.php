@@ -30,7 +30,11 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="/admin/account/<?= $account['id'] ?>">View Profile</a>
-                                        <a class="dropdown-item" href="#">Disable User</a>
+                                        <?php if ((int)$account['active'] !== 0) { ?>
+                                            <a class="dropdown-item" href="/admin/account/disable/<?= $account['id'] ?>">Disable User</a>
+                                        <?php } else { ?>
+                                            <a class="dropdown-item" href="/admin/account/enable/<?= $account['id'] ?>">Enable User</a>
+                                        <?php } ?>
                                         <a class="dropdown-item" href="#">Delete User</a>
                                     </div>
                                 </div>

@@ -47,9 +47,10 @@ abstract class AbstractModelContainer extends Singleton
         $data = $db->select($tableName, $finalMapping, $condition);
 
         $this->result = $data[0];
+        return $data[0];
     }
 
-    public function findAllBy(array $condition = [])
+    public function findAllBy(array $condition = []): array
     {
         /** @var Medoo $db */
         $db = Database::getInstance()->getConnection();
@@ -74,6 +75,7 @@ abstract class AbstractModelContainer extends Singleton
         $data = $db->select($tableName, $finalMapping, $condition);
 
         $this->result = $data;
+        return $data;
     }
 
     public function getProp(string $propName)

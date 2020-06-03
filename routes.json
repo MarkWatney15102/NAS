@@ -4,8 +4,17 @@
         "request": {
             "1": "/login"
         },
-        "controllerName": "Login",
+        "controllerName": "Account",
         "action": "loginAction",
+        "accessLevel": 0
+    },
+    "logout": {
+        "name": "logout",
+        "request": {
+            "1": "/logout"
+        },
+        "controllerName": "Account",
+        "action": "logoutAction",
         "accessLevel": 0
     },
     "home": {
@@ -19,8 +28,8 @@
         "action": "homeAction",
         "accessLevel": 50
     },
-    "accountlist": {
-        "name": "accountlist",
+    "accountList": {
+        "name": "accountList",
         "request": {
             "1": "/admin/accountlist"
         },
@@ -36,6 +45,26 @@
         "controllerName": "AccountProfile",
         "action": "AccountUserAction",
         "paramPattern": "^\\d+",
+        "accessLevel": 300
+    },
+    "accountDisable": {
+        "name": "accountDisable",
+        "request": {
+            "1": "/admin/account/disable/"
+        },
+        "controllerName": "Account",
+        "action": "disableAccountAction",
+        "paramPattern": "^\\d+",
+        "accessLevel": 300
+    },
+    "accountEnable": {
+        "name": "accountEnable",
+        "request": {
+            "1": "/admin/account/enable/"
+        },
+        "controllerName": "Account",
+        "action": "enableAccountAction",
+        "paramPatter": "^\\d+",
         "accessLevel": 300
     }
 }

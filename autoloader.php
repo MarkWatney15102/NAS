@@ -6,6 +6,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/const.php';
 $includeDir = [
     $_SERVER['DOCUMENT_ROOT'] . "/src/Helper",
     $_SERVER['DOCUMENT_ROOT'] . "/src/Structure",
+    $_SERVER['DOCUMENT_ROOT'] . "/src/Lib",
     $_SERVER['DOCUMENT_ROOT'] . "/src/Provider",
     $_SERVER['DOCUMENT_ROOT'] . "/src/Service",
     $_SERVER['DOCUMENT_ROOT'] . "/src/Controller",

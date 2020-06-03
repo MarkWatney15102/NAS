@@ -10,7 +10,7 @@ class AccountProfile extends AbstractController
     /**
      * @param string $param
      */
-    public function AccountUserAction(string $param)
+    public function AccountUserAction(string $param): void
     {
         $this->setPageTitle("Account Profile");
 

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace src\Structure\AbstractModel;
 
@@ -34,7 +35,7 @@ abstract class AbstractModel extends Singleton
      */
     private $tableName;
 
-    public function read(string $primaryKey)
+    public function read(string $primaryKey): void
     {
         $db = Database::getInstance()->getConnection();
         $this->db = $db;
@@ -68,15 +69,17 @@ abstract class AbstractModel extends Singleton
             ]
         );
 
-        $this->result = $result[0];
+        if ($result !== null) {
+            $this->result = $result[0];
+        }
     }
 
-    public function getProp(string $propName)
+    public function getProp(string $propName): string
     {
         $value = '';
 
         foreach ($this->mapping as $tableName => $mapping) {
-            if ((string)$mapping->mapTo === (string)$propName) {
+            if ((string)$mapping->mapTo === $propName) {
                 $value = $this->result[$tableName];
             }
         }
@@ -84,16 +87,16 @@ abstract class AbstractModel extends Singleton
         return $value;
     }
 
-    public function setProp(string $propName, string $value)
+    public function setProp(string $propName, string $value): void
     {
         foreach ($this->mapping as $tableName => $mapping) {
-            if ((string)$mapping->mapTo === (string)$propName) {
+            if ((string)$mapping->mapTo === $propName) {
                 $this->result[$tableName] = $value;
             }
         }
     }
 
-    public function update()
+    public function update(): void
     {
         $this->db->update($this->tableName, $this->result, $this->primaryKey);
     }

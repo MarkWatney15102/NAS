@@ -7,7 +7,7 @@ use src\Structure\AbstractController\AbstractController;
 
 class AccountList extends AbstractController
 {
-    public function AccountListingAction()
+    public function AccountListingAction(): void
     {
         $this->setPageTitle("User Account List");
 

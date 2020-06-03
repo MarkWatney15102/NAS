@@ -47,10 +47,10 @@ class LoginChecker
                     "username" => $this->username
                 ]);
 
-                $userdata = $data[0];
+                $userData = $data[0];
 
-                if (password_verify($this->password, $userdata['password'])) {
-                    $this->setUID($userdata['id']);
+                if (password_verify($this->password, $userData['password'])) {
+                    $this->setUID($userData['id']);
 
                     Redirect::to("/home");
                 } else {
@@ -72,7 +72,7 @@ class LoginChecker
     public static function isLoggedIn(): void
     {
         if (!isset($_COOKIE['UID'])) {
-            if ($_SERVER['REQUEST_URI'] != "/login") {
+            if ($_SERVER['REQUEST_URI'] !== "/login") {
                 Redirect::to("/login");
             }
         }
