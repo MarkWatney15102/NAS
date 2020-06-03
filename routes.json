@@ -5,7 +5,17 @@
             "1": "/login"
         },
         "controllerName": "Account",
-        "action": "loginAction"
+        "action": "loginAction",
+        "neededPermission": 0
+    },
+    "noPermissions": {
+        "name": "noPermissions",
+        "request": {
+            "1": "/noPermissions"
+        },
+        "controllerName": "Errors",
+        "action": "noPermissionsAction",
+        "neededPermission": 0
     },
     "logout": {
         "name": "logout",
@@ -13,7 +23,8 @@
             "1": "/logout"
         },
         "controllerName": "Account",
-        "action": "logoutAction"
+        "action": "logoutAction",
+        "neededPermission": 0
     },
     "home": {
         "name": "home",
@@ -23,7 +34,8 @@
             "3": "/dashboard"
         },
         "controllerName": "Home",
-        "action": "homeAction"
+        "action": "homeAction",
+        "neededPermission": 0
     },
     "accountList": {
         "name": "accountList",
@@ -31,7 +43,8 @@
             "1": "/admin/accountlist"
         },
         "controllerName": "AccountList",
-        "action": "AccountListingAction"
+        "action": "AccountListingAction",
+        "neededPermission": 0
     },
     "accountProfile": {
         "name": "accountProfile",
@@ -40,7 +53,8 @@
         },
         "controllerName": "AccountProfile",
         "action": "AccountUserAction",
-        "paramPattern": "^\\d+"
+        "paramPattern": "^\\d+",
+        "neededPermission": 0
     },
     "accountDisable": {
         "name": "accountDisable",
@@ -49,7 +63,8 @@
         },
         "controllerName": "Account",
         "action": "disableAccountAction",
-        "paramPattern": "^\\d+"
+        "paramPattern": "^\\d+",
+        "neededPermission": 0
     },
     "accountEnable": {
         "name": "accountEnable",
@@ -58,6 +73,7 @@
         },
         "controllerName": "Account",
         "action": "enableAccountAction",
-        "paramPatter": "^\\d+"
+        "paramPatter": "^\\d+",
+        "neededPermission": 0
     }
 }

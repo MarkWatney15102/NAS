@@ -19,7 +19,7 @@ class PermissionHelper
         $currentUser = CurrentUser::get();
         $userId = $currentUser->getProp('id');
 
-        return self::hasPermWithUserId($permId, $userId);
+        return self::hasPermWithUserId($permId, (int)$userId);
     }
 
     /**

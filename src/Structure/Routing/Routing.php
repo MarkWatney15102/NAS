@@ -3,6 +3,8 @@
 namespace src\Structure\Routing;
 
 use src\Service\LoginChecker\LoginChecker;
+use src\Service\Redirect\Redirect;
+use src\Structure\Header\PermissionHelper\PermissionHelper;
 
 class Routing
 {
@@ -39,14 +41,27 @@ class Routing
 
                     LoginChecker::isLoggedIn();
 
-                    $class = "\\src\\Controller\\{$controllerName}\\{$controllerName}";
-                    $controller = new $class;
-                    $controller->$action($param);
+                    if ((int)$route['neededPermission'] !== 0) {
+                        if (PermissionHelper::hasPerm($route['neededPermission'])) {
+                            $this->routing($controllerName, $action, $param);
+                        } else {
+                            Redirect::to("/noPermissions");
+                        }
+                    } else {
+                        $this->routing($controllerName, $action, $param);
+                    }
                 } else {
                     continue;
                 }
             }
         }
+    }
+
+    private function routing(string $controllerName, string $action, string $param): void
+    {
+        $class = "\\src\\Controller\\{$controllerName}\\{$controllerName}";
+        $controller = new $class;
+        $controller->$action($param);
     }
 
     /**
