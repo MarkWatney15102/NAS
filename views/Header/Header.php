@@ -33,11 +33,11 @@
                         <hr>
                         PHP Version
                         <br>
-                        <br>
+                        <?= PHP_VERSION ?>
                         <hr>
                         Version
                         <br>
-                        <?= VERSION; ?>
+                        <?= VERSION ?>
                     </div>
                 </div>
             </li>

@@ -36,7 +36,6 @@ class Routing
                 if ((string)$request === (string)$this->uri) {
                     $controllerName = $route['controllerName'];
                     $action = $route['action'];
-                    $accessLevel = $route['accessLevel'];
 
                     LoginChecker::isLoggedIn();
 

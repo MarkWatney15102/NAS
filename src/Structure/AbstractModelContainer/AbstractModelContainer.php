@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace src\Structure\AbstractModelContainer;
 
@@ -20,9 +21,9 @@ abstract class AbstractModelContainer extends Singleton
     private $result;
 
     /**
-     * @param $condition array -> dbfields
+     * @param array $condition
      */
-    public function findOneBy(array $condition = [])
+    public function findOneBy(array $condition = []): void
     {
         /** @var Medoo $db */
         $db = Database::getInstance()->getConnection();
@@ -46,11 +47,15 @@ abstract class AbstractModelContainer extends Singleton
 
         $data = $db->select($tableName, $finalMapping, $condition);
 
-        $this->result = $data[0];
-        return $data[0];
+        if ($data[0] !== null) {
+            $this->result = $data[0];
+        }
     }
 
-    public function findAllBy(array $condition = []): array
+    /**
+     * @param array $condition
+     */
+    public function findAllBy(array $condition = []): void
     {
         /** @var Medoo $db */
         $db = Database::getInstance()->getConnection();
@@ -74,16 +79,21 @@ abstract class AbstractModelContainer extends Singleton
 
         $data = $db->select($tableName, $finalMapping, $condition);
 
-        $this->result = $data;
-        return $data;
+        if ($data !== null) {
+            $this->result = $data;
+        }
     }
 
-    public function getProp(string $propName)
+    /**
+     * @param string $propName
+     * @return string
+     */
+    public function getProp(string $propName): string
     {
         $value = '';
 
         foreach ($this->mapping as $tableName => $mapping) {
-            if ((string)$mapping->mapTo === (string)$propName) {
+            if ((string)$mapping->mapTo === $propName) {
                 $value = $this->result[$tableName];
             }
         }
@@ -91,8 +101,22 @@ abstract class AbstractModelContainer extends Singleton
         return $value;
     }
 
-    public function getAllProps()
+    /**
+     * @return array
+     */
+    public function getAllProps(): array
     {
         return $this->result;
+    }
+
+    /**
+     * @return bool
+     */
+    public function checkOnEmpty(): bool
+    {
+        if (empty($this->result)) {
+            return true;
+        }
+        return false;
     }
 }

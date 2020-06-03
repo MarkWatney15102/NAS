@@ -17,8 +17,8 @@ use src\Structure\Header\Header;
     $header = new Header();
     $header->loadCssFiles();
     $header->loadJsFiles();
+    $header->loadHeaderInformation();
     ?>
-    <meta charset="UTF-8">
 </head>
 <body>
 <?php

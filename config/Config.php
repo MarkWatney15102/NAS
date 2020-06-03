@@ -33,7 +33,6 @@ class Config extends Singleton
                 "request" => $route->request,
                 "controllerName" => $route->controllerName,
                 "action" => $route->action,
-                "accessLevel" => $route->accessLevel
             ];
         }
     }

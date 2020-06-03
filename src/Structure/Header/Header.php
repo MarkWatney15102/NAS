@@ -2,18 +2,11 @@
 
 namespace src\Structure\Header;
 
-use Medoo\Medoo;
-use src\Structure\Database\Database;
 use src\Structure\Routing\Routing;
 use src\Service\Includer\Includer;
 
 class Header
 {
-    /**
-     * @var Medoo
-     */
-    private $db;
-
     /**
      * @var string
      */
@@ -21,11 +14,10 @@ class Header
 
     public function __construct()
     {
-        $this->db = Database::getInstance()->getConnection();
         $this->setPathToFilePartOne();
     }
 
-    public function loadJsFiles()
+    public function loadJsFiles(): void
     {
         $includeFolder = "/src/dist/js";
         $path = $_SERVER['DOCUMENT_ROOT'] . $includeFolder;
@@ -40,7 +32,7 @@ class Header
         }
     }
 
-    public function loadCssFiles()
+    public function loadCssFiles(): void
     {
         $includeFolder = "/src/dist/css";
         $path = $_SERVER['DOCUMENT_ROOT'] . $includeFolder;
@@ -51,7 +43,12 @@ class Header
         }
     }
 
-    private function setPathToFilePartOne()
+    public function loadHeaderInformation(): void
+    {
+        echo '<meta charset="UTF-8">';
+    }
+
+    private function setPathToFilePartOne(): void
     {
         $subroutingcount = Routing::getSubroutingCount();
 

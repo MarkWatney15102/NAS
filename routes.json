@@ -5,8 +5,7 @@
             "1": "/login"
         },
         "controllerName": "Account",
-        "action": "loginAction",
-        "accessLevel": 0
+        "action": "loginAction"
     },
     "logout": {
         "name": "logout",
@@ -14,8 +13,7 @@
             "1": "/logout"
         },
         "controllerName": "Account",
-        "action": "logoutAction",
-        "accessLevel": 0
+        "action": "logoutAction"
     },
     "home": {
         "name": "home",
@@ -25,8 +23,7 @@
             "3": "/dashboard"
         },
         "controllerName": "Home",
-        "action": "homeAction",
-        "accessLevel": 50
+        "action": "homeAction"
     },
     "accountList": {
         "name": "accountList",
@@ -34,8 +31,7 @@
             "1": "/admin/accountlist"
         },
         "controllerName": "AccountList",
-        "action": "AccountListingAction",
-        "accessLevel": 300
+        "action": "AccountListingAction"
     },
     "accountProfile": {
         "name": "accountProfile",
@@ -44,8 +40,7 @@
         },
         "controllerName": "AccountProfile",
         "action": "AccountUserAction",
-        "paramPattern": "^\\d+",
-        "accessLevel": 300
+        "paramPattern": "^\\d+"
     },
     "accountDisable": {
         "name": "accountDisable",
@@ -54,8 +49,7 @@
         },
         "controllerName": "Account",
         "action": "disableAccountAction",
-        "paramPattern": "^\\d+",
-        "accessLevel": 300
+        "paramPattern": "^\\d+"
     },
     "accountEnable": {
         "name": "accountEnable",
@@ -64,7 +58,6 @@
         },
         "controllerName": "Account",
         "action": "enableAccountAction",
-        "paramPatter": "^\\d+",
-        "accessLevel": 300
+        "paramPatter": "^\\d+"
     }
 }

@@ -100,4 +100,15 @@ abstract class AbstractModel extends Singleton
     {
         $this->db->update($this->tableName, $this->result, $this->primaryKey);
     }
+
+    /**
+     * @return bool
+     */
+    public function checkOnEmpty(): bool
+    {
+        if (empty($this->result)) {
+            return true;
+        }
+        return false;
+    }
 }

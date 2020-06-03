@@ -15,6 +15,6 @@ class CurrentUser
             return $user;
         }
 
-        return;
+        return null;
     }
 }
