@@ -28,7 +28,26 @@
                 <div class="card-header">
                     <h5 class="card-title">Permissions</h5>
                 </div>
-                <div class="card-body"></div>
+                <div class="card-body">
+                    <table id="user_permissions_table" class="table table-striped table-bordered" style="width:100%"  data-userid="<?= $user->getUserId() ?>">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Permission Name</th>
+                                <th>Permission Description</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>Permission Name</th>
+                                <th>Permission Description</th>
+                                <th>Status</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

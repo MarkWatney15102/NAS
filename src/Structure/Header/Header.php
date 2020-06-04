@@ -14,7 +14,7 @@ class Header
 
     public function __construct()
     {
-        $this->setPathToFilePartOne();
+        $this->pathToFilePartOne = self::setPathToFilePartOne();
     }
 
     public function loadJsFiles(): void
@@ -30,6 +30,8 @@ class Header
                 Includer::includeJsFile($this->pathToFilePartOne . "src/dist/js/". end($file));
             }
         }
+
+        $this->loadControllerJsFiles();
     }
 
     public function loadCssFiles(): void
@@ -41,6 +43,8 @@ class Header
             $file = explode("/", $filename);
             Includer::includeCssFile($this->pathToFilePartOne . "src/dist/css/". end($file));
         }
+
+        $this->loadControllerCSSFiles();
     }
 
     public function loadHeaderInformation(): void
@@ -48,7 +52,7 @@ class Header
         echo '<meta charset="UTF-8">';
     }
 
-    private function setPathToFilePartOne(): void
+    public static function setPathToFilePartOne(): string
     {
         $subroutingcount = Routing::getSubroutingCount();
 
@@ -58,6 +62,38 @@ class Header
             $pathToFilePartOne .= "../";
         }
 
-        $this->pathToFilePartOne = $pathToFilePartOne;
+        return $pathToFilePartOne;
+    }
+
+    private function loadControllerJsFiles(): void
+    {
+        $includeFolder = $_SERVER['DOCUMENT_ROOT'] . "/src/Controller";
+        $path = "src/Controller";
+
+        $dirs = glob($includeFolder . "/*", GLOB_ONLYDIR);
+
+        foreach ($dirs as $dir) {
+            foreach (glob("{$dir}/js/*.js") as $filename) {
+                $file = explode("/", $filename);
+                $controllerName = array_slice($file, -3, 1, true);
+                Includer::includeJsFile($this->pathToFilePartOne . $path . "/" . $controllerName[5] . "/js/". end($file));
+            }
+        }
+    }
+
+    private function loadControllerCSSFiles(): void
+    {
+        $includeFolder = $_SERVER['DOCUMENT_ROOT'] . "/src/Controller";
+        $path = "src/Controller";
+
+        $dirs = glob($includeFolder . "/*", GLOB_ONLYDIR);
+
+        foreach ($dirs as $dir) {
+            foreach (glob("{$dir}/css/*.css") as $filename) {
+                $file = explode("/", $filename);
+                $controllerName = array_slice($file, -3, 1, true);
+                Includer::includeJsFile($this->pathToFilePartOne . $path . "/" . $controllerName[5] . "/css/". end($file));
+            }
+        }
     }
 }

@@ -5,7 +5,9 @@ namespace src\Structure\Heading\Heading;
 
 use Medoo\Medoo;
 use src\Service\LoginChecker\LoginChecker;
+use src\Service\Views\Views;
 use src\Structure\Database\Database;
+use src\Structure\Routing\Routing;
 
 class Heading
 {
@@ -34,6 +36,8 @@ class Heading
     {
         $loggedIn = LoginChecker::isUserLoggedIn();
 
-        require $_SERVER['DOCUMENT_ROOT'] . "/views/Header/Header.php";
+        if (!Routing::checkApiCall()) {
+            require $_SERVER['DOCUMENT_ROOT'] . "/views/Header/Header.php";
+        }
     }
 }

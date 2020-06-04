@@ -75,5 +75,15 @@
         "action": "enableAccountAction",
         "paramPatter": "^\\d+",
         "neededPermission": 0
+    },
+    "accountProfileApiLoadPermission": {
+        "name": "",
+        "request": {
+            "1": "/api/AccountProfilePermission/load/"
+        },
+        "controllerName": "Api",
+        "action": "accountProfilePermissionLoadDataAction",
+        "paramPatter": "^\\d+",
+        "neededPermission": 0
     }
 }

@@ -39,7 +39,7 @@ class PermissionHelper
             $finalPermissions[] = $permission['permission_id'];
         }
 
-        if (in_array($permId, $finalPermissions, true)) {
+        if (in_array((string)$permId, $finalPermissions, true)) {
             return true;
         }
 

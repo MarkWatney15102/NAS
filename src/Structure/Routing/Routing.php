@@ -24,7 +24,7 @@ class Routing
      */
     public function __construct(array $routes)
     {
-        $this->uri = $_SERVER['REQUEST_URI'];
+        $this->uri = $this->removeParams($_SERVER['REQUEST_URI']);
         $this->routes = $routes;
     }
 
@@ -73,5 +73,28 @@ class Routing
         unset($routSeparation[0]);
 
         return count($routSeparation);
+    }
+
+    public static function checkApiCall(): bool
+    {
+        $rout = $_SERVER['REQUEST_URI'];
+
+        $routSplit = explode("/", $rout);
+
+        if ($routSplit[1] === 'api') {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $rout
+     * @return string
+     */
+    private function removeParams(string $rout): string
+    {
+        $pattern = "/(\?_=)\w+/";
+        return preg_replace($pattern, "", $rout);
     }
 }

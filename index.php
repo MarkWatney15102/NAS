@@ -6,28 +6,34 @@ use src\Structure\Heading\Heading\Heading;
 use src\Structure\Routing\Routing;
 use src\Structure\Header\Header;
 
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
+$config = Config::getInstance();
+$config->init();
+
+if (!Routing::checkApiCall()) { ?>
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <?php
+            $header = new Header();
+            $header->loadCssFiles();
+            $header->loadJsFiles();
+            $header->loadHeaderInformation();
+            ?>
+        </head>
+        <body>
+        <?php
+            $heading = new Heading();
+            $heading->loadHeading();
+
+            $routing = new Routing($config->getRoutes());
+            $routing->rout();
+
+        ?>
+        </body>
+    </html>
+<?php } else { ?>
     <?php
-    $config = Config::getInstance();
-    $config->init();
-
-    $header = new Header();
-    $header->loadCssFiles();
-    $header->loadJsFiles();
-    $header->loadHeaderInformation();
+        $routing = new Routing($config->getRoutes());
+        $routing->rout();
     ?>
-</head>
-<body>
-<?php
-$heading = new Heading();
-$heading->loadHeading();
-
-$routing = new Routing($config->getRoutes());
-$routing->rout();
-
-?>
-</body>
-</html>
+<?php } ?>
