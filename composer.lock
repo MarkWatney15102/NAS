@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fb071cce9f48c180a975b1185e9a83da",
+    "content-hash": "9eae21902a469be8e81122f5d3aa683f",
     "packages": [
         {
             "name": "catfan/medoo",
@@ -67,26 +67,26 @@
             "time": "2020-02-11T08:20:42+00:00"
         },
         {
-            "name": "php-extended/php-system",
-            "version": "2.0.0",
+            "name": "christeredvartsen/sysinfo",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
-                "url": "https://gitlab.com/php-extended/php-system.git",
-                "reference": "28fe88933a17d82fafe2404e741509fa65d70c9e"
+                "url": "https://github.com/christeredvartsen/sysinfo.git",
+                "reference": "8e9614737f5ce4263efc9d68be7c44e2074a53c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/php-extended%2Fphp-system/repository/archive.zip?sha=28fe88933a17d82fafe2404e741509fa65d70c9e",
-                "reference": "28fe88933a17d82fafe2404e741509fa65d70c9e",
+                "url": "https://api.github.com/repos/christeredvartsen/sysinfo/zipball/8e9614737f5ce4263efc9d68be7c44e2074a53c2",
+                "reference": "8e9614737f5ce4263efc9d68be7c44e2074a53c2",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.0"
+                "php": ">=5.3.2"
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "PhpExtended\\System\\": "src/"
+                "psr-0": {
+                    "SysInfo": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -95,19 +95,58 @@
             ],
             "authors": [
                 {
-                    "name": "Anastaszor",
-                    "role": "Developer"
+                    "name": "Christer Edvartsen",
+                    "email": "cogo@starzinger.net",
+                    "homepage": "http://cogo.wordpress.com",
+                    "role": "Project lead"
                 }
             ],
-            "description": "A generic way to find informations about the running system",
-            "homepage": "https://gitlab.com/php-extended/php-system",
+            "description": "SysInfo is a PHP library that can be used to fetch information about the system (CPU usage, Load avg., Memory usage +++)",
+            "homepage": "https://github.com/christeredvartsen/sysinfo",
             "keywords": [
-                "operating system",
-                "os",
-                "php",
-                "system"
+                "sysinfo"
             ],
-            "time": "2020-02-20T08:16:43+00:00"
+            "abandoned": true,
+            "time": "2012-07-16T09:44:02+00:00"
+        },
+        {
+            "name": "danielme85/simple-server-info",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/danielme85/simple-server-info.git",
+                "reference": "4503a71b9f33e6e1b91b2bbda01fe18056bb7fb3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/danielme85/simple-server-info/zipball/4503a71b9f33e6e1b91b2bbda01fe18056bb7fb3",
+                "reference": "4503a71b9f33e6e1b91b2bbda01fe18056bb7fb3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "danielme85\\Server\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Mellum",
+                    "email": "mellum@gmail.com"
+                }
+            ],
+            "description": "A simple PHP 7.1+ class to provide system information about your server/system build.",
+            "time": "2020-02-05T15:54:44+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",

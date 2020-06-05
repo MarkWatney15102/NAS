@@ -13,7 +13,6 @@
         "ext-SimpleXML": " *",
         "ext-pcre": " *",
         "ext-xml": " *",
-        "ext-dom": " *",
-        "php-extended/php-system": "^2.0"
+        "ext-dom": " *"
     }
 }

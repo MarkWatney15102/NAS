@@ -6,8 +6,12 @@ abstract class Singleton
 {
     protected static $instance = [];
 
-    public static function getInstance(){
-        $class = get_called_class(); 
+    public static function getInstance(string $className = ''){
+        if ($className === '') {
+            $class = get_called_class();
+        } else {
+            $class = $className;
+        }
         if(!isset(self::$instance[$class]) || !self::$instance[$class] instanceof $class){
             self::$instance[$class] = new static();
         }

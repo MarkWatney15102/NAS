@@ -24,6 +24,11 @@ class LoginChecker
      */
     private $password;
 
+    /**
+     * @var int
+     */
+    private $userId = 0;
+
     public function __construct(string $username, string $password)
     {
         $db = Database::getInstance()->getConnection();
@@ -49,10 +54,10 @@ class LoginChecker
 
                 $userData = $data[0];
 
+
                 if (password_verify($this->password, $userData['password'])) {
                     $this->setUID($userData['id']);
-
-                    Redirect::to("/home");
+                    $this->userId = $userData['id'];
                 } else {
                     echo 'wrong password';
                 }
@@ -85,5 +90,13 @@ class LoginChecker
         }
 
         return false;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUserId(): int
+    {
+        return $this->userId;
     }
 }

@@ -9,7 +9,7 @@ class CurrentUser
     public static function get()
     {
         if (isset($_COOKIE['UID'])) {
-            $user = UserModel::getInstance();
+            $user = UserModel::getInstance(self::class);
             $user->read($_COOKIE['UID']);
 
             return $user;

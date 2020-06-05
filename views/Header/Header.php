@@ -21,6 +21,7 @@ use src\Service\CurrentUser\CurrentUser;
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/admin/accountlist">Account List</a>
+                    <a class="dropdown-item" href="/account/create">Create Account</a>
                 </div>
             </li>
             <?php if (CurrentUser::get()->getDev()): ?>

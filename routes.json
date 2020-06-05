@@ -77,12 +77,68 @@
         "neededPermission": 0
     },
     "accountProfileApiLoadPermission": {
-        "name": "",
+        "name": "accountProfileApiLoadPermission",
         "request": {
             "1": "/api/AccountProfilePermission/load/"
         },
         "controllerName": "Api",
         "action": "accountProfilePermissionLoadDataAction",
+        "paramPatter": "^\\d+",
+        "neededPermission": 0
+    },
+    "accountProfileAddPermission": {
+        "name": "accountProfileAddPermission",
+        "request": {
+            "1": "/account/form/addPerm"
+        },
+        "controllerName": "Account",
+        "action": "addPermission",
+        "neededPermission": 0
+    },
+    "accountProfileRemovePermission": {
+        "name": "accountProfileRemovePermission",
+        "request": {
+            "1": "/account/form/removePerm"
+        },
+        "controllerName": "Account",
+        "action": "removePermission",
+        "neededPermission": 0
+    },
+    "createAccount": {
+        "name": "createAccount",
+        "request": {
+            "1": "/account/create"
+        },
+        "controllerName": "Account",
+        "action": "createAccount",
+        "neededPermission": 0
+    },
+    "createAccountForm": {
+        "name": "createAccountForm",
+        "request": {
+            "1": "/account/form/create"
+        },
+        "controllerName": "Account",
+        "action": "createAccountForm",
+        "neededPermission": 0
+    },
+    "accountRemoveDev": {
+        "name": "accountRemoveDev",
+        "request": {
+            "1": "/admin/account/removeDev/"
+        },
+        "controllerName": "Account",
+        "action": "removeDev",
+        "paramPatter": "^\\d+",
+        "neededPermission": 0
+    },
+    "accountSetDev": {
+        "name": "accountSetDev",
+        "request": {
+            "1": "/admin/account/setDev/"
+        },
+        "controllerName": "Account",
+        "action": "setDev",
         "paramPatter": "^\\d+",
         "neededPermission": 0
     }
