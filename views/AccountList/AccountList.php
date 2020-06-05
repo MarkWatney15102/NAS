@@ -25,10 +25,10 @@
                             <td><?= $account['lastname'] ?></td>
                             <td>
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="btn btn-outline-info dropdown-toggle" href="#" role="button" id="accountActions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Action
-                                    </button>
-                                    <div class="dropdown-menu">
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="accountActions">
                                         <a class="dropdown-item" href="/admin/account/<?= $account['id'] ?>">View Profile</a>
                                         <?php if ((int)$account['active'] !== 0) { ?>
                                             <a class="dropdown-item" href="/admin/account/disable/<?= $account['id'] ?>">Disable User</a>

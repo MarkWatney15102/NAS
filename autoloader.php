@@ -15,8 +15,8 @@ $includeDir = [
 
 foreach ($includeDir as $key => $folder) {
     $directories = glob($folder . '/*', GLOB_ONLYDIR);
-    foreach ($directories as $directorie) {
-        foreach (glob("{$directorie}/*.php") as $filename) {
+    foreach ($directories as $dir) {
+        foreach (glob("{$dir}/*.php") as $filename) {
             include $filename;
         }
     }

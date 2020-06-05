@@ -5,7 +5,6 @@ namespace src\Structure\Heading\Heading;
 
 use Medoo\Medoo;
 use src\Service\LoginChecker\LoginChecker;
-use src\Service\Views\Views;
 use src\Structure\Database\Database;
 use src\Structure\Routing\Routing;
 
@@ -16,6 +15,9 @@ class Heading
      */
     private $db;
 
+    /**
+     * @var array
+     */
     private $structure;
 
     public function __construct()
@@ -25,14 +27,14 @@ class Heading
         $this->initStructure();
     }
 
-    private function initStructure()
+    private function initStructure(): void
     {
         /**
          * @todo Heading Structur über array Steuern
          */
     }
 
-    public function loadHeading()
+    public function loadHeading(): void
     {
         $loggedIn = LoginChecker::isUserLoggedIn();
 

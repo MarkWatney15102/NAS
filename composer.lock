@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dd8b095b1c045a664a263c282c7ce2fc",
+    "content-hash": "fb071cce9f48c180a975b1185e9a83da",
     "packages": [
         {
             "name": "catfan/medoo",
@@ -67,6 +67,49 @@
             "time": "2020-02-11T08:20:42+00:00"
         },
         {
+            "name": "php-extended/php-system",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/php-extended/php-system.git",
+                "reference": "28fe88933a17d82fafe2404e741509fa65d70c9e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/php-extended%2Fphp-system/repository/archive.zip?sha=28fe88933a17d82fafe2404e741509fa65d70c9e",
+                "reference": "28fe88933a17d82fafe2404e741509fa65d70c9e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpExtended\\System\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anastaszor",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A generic way to find informations about the running system",
+            "homepage": "https://gitlab.com/php-extended/php-system",
+            "keywords": [
+                "operating system",
+                "os",
+                "php",
+                "system"
+            ],
+            "time": "2020-02-20T08:16:43+00:00"
+        },
+        {
             "name": "squizlabs/php_codesniffer",
             "version": "3.5.5",
             "source": {
@@ -125,7 +168,11 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-simplexml": " *",
+        "ext-pcre": " *",
+        "ext-xml": " *",
+        "ext-dom": " *"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"

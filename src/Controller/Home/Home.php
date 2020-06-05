@@ -2,20 +2,26 @@
 
 namespace src\Controller\Home;
 
-use src\Models\UserFileUploadsModel\UserFileUploadsModelContainer;
+use PhpExtended\System\Solaris;
+use src\Models\UserModel\UserModel;
 use src\Service\CurrentUser\CurrentUser;
 use src\Structure\AbstractController\AbstractController;
 
 class Home extends AbstractController
 {
-    public function homeAction()
+    public function homeAction(): void
     {
         $this->setPageTitle("Dashboard");
 
+        /** @var UserModel $currentUser */
+        $currentUser = CurrentUser::get();
 
-        $userFiles = UserFileUploadsModelContainer::getInstance();
-        $data = $userFiles->findAllBy(["user_id" => CurrentUser::get()->getProp('id')]);
+        $dev = $currentUser->getDev();
 
-        $this->render("Home/Home.php");
+        $sysInfo = [];
+
+        var_dump(Solaris::get());
+
+        $this->render("Home/Home.php", ['dev' => $dev, 'sysInfo' => $sysInfo]);
     }
 }

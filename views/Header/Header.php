@@ -1,3 +1,6 @@
+<?php
+use src\Service\CurrentUser\CurrentUser;
+?>
 <nav class="navbar navbar-expand-lg navbar-light nav-bar">
     <a class="navbar-brand" href="/home">Navbar</a>
     <ul class="navbar-nav mr-auto">
@@ -20,6 +23,7 @@
                     <a class="dropdown-item" href="/admin/accountlist">Account List</a>
                 </div>
             </li>
+            <?php if (CurrentUser::get()->getDev()): ?>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" param="navbarDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
@@ -41,6 +45,7 @@
                     </div>
                 </div>
             </li>
+            <?php endif; ?>
             <li class="nav-item active">
                 <a class="nav-link" href="/logout">Logout</a>
             </li>

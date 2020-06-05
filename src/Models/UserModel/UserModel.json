@@ -26,6 +26,9 @@
         "online": {
             "mapTo": "online"
         },
+        "dev": {
+            "mapTo": "dev"
+        },
         "create_time": {
             "mapTo": "createTime"
         }

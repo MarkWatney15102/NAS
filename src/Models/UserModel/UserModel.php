@@ -3,6 +3,7 @@
 namespace src\Models\UserModel;
 
 use DateTime;
+use Exception;
 use src\Structure\AbstractModel\AbstractModel;
 
 class UserModel extends AbstractModel
@@ -56,8 +57,16 @@ class UserModel extends AbstractModel
     }
 
     /**
+     * @return int
+     */
+    public function getDev(): int
+    {
+        return $this->result['dev'];
+    }
+
+    /**
      * @return DateTime
-     * @throws \Exception
+     * @throws Exception
      */
     public function getCreateTime(): DateTime
     {

@@ -9,6 +9,11 @@
     "require": {
         "catfan/medoo": "^1.7",
         "squizlabs/php_codesniffer": "^3.5",
-      "ext-json": "*"
+        "ext-json": "*",
+        "ext-SimpleXML": " *",
+        "ext-pcre": " *",
+        "ext-xml": " *",
+        "ext-dom": " *",
+        "php-extended/php-system": "^2.0"
     }
 }
