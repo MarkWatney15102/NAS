@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace src\Structure\Header\PermissionHelper;
 
 use src\Models\PermissionModel\PermissionModelContainer;
+use src\Models\UserModel\UserModel;
 use src\Models\UserPermissionModel\UserPermissionModel;
 use src\Models\UserPermissionModel\UserPermissionModelContainer;
 use src\Service\CurrentUser\CurrentUser;
@@ -72,5 +73,18 @@ class PermissionHelper
         }
 
         return $userPermissionList;
+    }
+
+    public static function isDev(int $userId): bool
+    {
+        /** @var UserModel $user */
+        $user = UserModel::getInstance();
+        $user->read((string)$userId);
+
+        if ($user->getDev() === 1) {
+            return true;
+        }
+
+        return false;
     }
 }

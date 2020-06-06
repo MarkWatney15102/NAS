@@ -3,9 +3,10 @@ declare(strict_types=1);
 
 namespace src\Controller\Api;
 
+use src\Structure\AbstractController\AbstractController;
 use src\Structure\Header\PermissionHelper\PermissionHelper;
 
-class Api
+class Api extends AbstractController
 {
     /**
      * @param string $param

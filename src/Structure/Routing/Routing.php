@@ -38,6 +38,7 @@ class Routing
                 if ((string)$request === (string)$this->uri) {
                     $controllerName = $route['controllerName'];
                     $action = $route['action'];
+                    $dev = $route['dev'];
 
                     LoginChecker::isLoggedIn();
 
@@ -48,7 +49,15 @@ class Routing
                             Redirect::to("/noPermissions");
                         }
                     } else {
-                        $this->routing($controllerName, $action, $param);
+                        if ((int)$dev === 1) {
+                            if (PermissionHelper::isDev($_COOKIE['UID'])) {
+                                $this->routing($controllerName, $action, $param);
+                            } else {
+                                echo 'No Dev';
+                            }
+                        } else {
+                            $this->routing($controllerName, $action, $param);
+                        }
                     }
                 } else {
                     continue;

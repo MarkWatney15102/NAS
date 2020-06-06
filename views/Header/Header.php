@@ -2,7 +2,7 @@
 use src\Service\CurrentUser\CurrentUser;
 ?>
 <nav class="navbar navbar-expand-lg navbar-light nav-bar">
-    <a class="navbar-brand" href="/home">Navbar</a>
+    <a class="navbar-brand" href="/home"><?= TITLE ?></a>
     <ul class="navbar-nav mr-auto">
         <?php if ($loggedIn) { ?>
             <li class="nav-item active">
@@ -25,27 +25,36 @@ use src\Service\CurrentUser\CurrentUser;
                 </div>
             </li>
             <?php if (CurrentUser::get()->getDev()): ?>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" param="navbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    Systemadmin
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <div class="col-lg-12" style="text-align: center">
-                        Database Name
-                        <br>
-                        <br>
-                        <hr>
-                        PHP Version
-                        <br>
-                        <?= PHP_VERSION ?>
-                        <hr>
-                        Version
-                        <br>
-                        <?= VERSION ?>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" param="navbarDropdown" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Dev Functions
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/dev/dashboard">Dev Dashboard</a>
                     </div>
-                </div>
-            </li>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" param="navbarDropdown" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Systemadmin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="col-lg-12" style="text-align: center">
+                            Database Name
+                            <br>
+                            <br>
+                            <hr>
+                            PHP Version
+                            <br>
+                            <?= PHP_VERSION ?>
+                            <hr>
+                            Version
+                            <br>
+                            <?= VERSION ?>
+                        </div>
+                    </div>
+                </li>
             <?php endif; ?>
             <li class="nav-item active">
                 <a class="nav-link" href="/logout">Logout</a>

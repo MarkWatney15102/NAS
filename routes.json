@@ -6,7 +6,8 @@
         },
         "controllerName": "Account",
         "action": "loginAction",
-        "neededPermission": 0
+        "neededPermission": 0,
+        "dev": 0
     },
     "noPermissions": {
         "name": "noPermissions",
@@ -15,7 +16,8 @@
         },
         "controllerName": "Errors",
         "action": "noPermissionsAction",
-        "neededPermission": 0
+        "neededPermission": 0,
+        "dev": 0
     },
     "logout": {
         "name": "logout",
@@ -24,7 +26,8 @@
         },
         "controllerName": "Account",
         "action": "logoutAction",
-        "neededPermission": 0
+        "neededPermission": 0,
+        "dev": 0
     },
     "home": {
         "name": "home",
@@ -35,7 +38,8 @@
         },
         "controllerName": "Home",
         "action": "homeAction",
-        "neededPermission": 0
+        "neededPermission": 0,
+        "dev": 0
     },
     "accountList": {
         "name": "accountList",
@@ -44,7 +48,8 @@
         },
         "controllerName": "AccountList",
         "action": "AccountListingAction",
-        "neededPermission": 0
+        "neededPermission": 0,
+        "dev": 0
     },
     "accountProfile": {
         "name": "accountProfile",
@@ -54,7 +59,8 @@
         "controllerName": "AccountProfile",
         "action": "AccountUserAction",
         "paramPattern": "^\\d+",
-        "neededPermission": 0
+        "neededPermission": 0,
+        "dev": 0
     },
     "accountDisable": {
         "name": "accountDisable",
@@ -64,7 +70,8 @@
         "controllerName": "Account",
         "action": "disableAccountAction",
         "paramPattern": "^\\d+",
-        "neededPermission": 0
+        "neededPermission": 0,
+        "dev": 0
     },
     "accountEnable": {
         "name": "accountEnable",
@@ -74,7 +81,8 @@
         "controllerName": "Account",
         "action": "enableAccountAction",
         "paramPatter": "^\\d+",
-        "neededPermission": 0
+        "neededPermission": 0,
+        "dev": 0
     },
     "accountProfileApiLoadPermission": {
         "name": "accountProfileApiLoadPermission",
@@ -84,7 +92,8 @@
         "controllerName": "Api",
         "action": "accountProfilePermissionLoadDataAction",
         "paramPatter": "^\\d+",
-        "neededPermission": 0
+        "neededPermission": 0,
+        "dev": 0
     },
     "accountProfileAddPermission": {
         "name": "accountProfileAddPermission",
@@ -93,7 +102,8 @@
         },
         "controllerName": "Account",
         "action": "addPermission",
-        "neededPermission": 0
+        "neededPermission": 0,
+        "dev": 0
     },
     "accountProfileRemovePermission": {
         "name": "accountProfileRemovePermission",
@@ -102,7 +112,8 @@
         },
         "controllerName": "Account",
         "action": "removePermission",
-        "neededPermission": 0
+        "neededPermission": 0,
+        "dev": 0
     },
     "createAccount": {
         "name": "createAccount",
@@ -111,7 +122,8 @@
         },
         "controllerName": "Account",
         "action": "createAccount",
-        "neededPermission": 0
+        "neededPermission": 0,
+        "dev": 0
     },
     "createAccountForm": {
         "name": "createAccountForm",
@@ -120,7 +132,8 @@
         },
         "controllerName": "Account",
         "action": "createAccountForm",
-        "neededPermission": 0
+        "neededPermission": 0,
+        "dev": 0
     },
     "accountRemoveDev": {
         "name": "accountRemoveDev",
@@ -130,7 +143,8 @@
         "controllerName": "Account",
         "action": "removeDev",
         "paramPatter": "^\\d+",
-        "neededPermission": 0
+        "neededPermission": 0,
+        "dev": 0
     },
     "accountSetDev": {
         "name": "accountSetDev",
@@ -140,6 +154,18 @@
         "controllerName": "Account",
         "action": "setDev",
         "paramPatter": "^\\d+",
-        "neededPermission": 0
+        "neededPermission": 0,
+        "dev": 1
+    },
+    "devDashboard": {
+        "name": "devDashboard",
+        "request": {
+            "1": "/dev/dashboard",
+            "2": "/dev"
+        },
+        "controllerName": "Developer",
+        "action": "devDashboard",
+        "neededPermission": 0,
+        "dev": 1
     }
 }

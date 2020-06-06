@@ -27,7 +27,8 @@ class Config extends Singleton
                 "request" => $route->request,
                 "controllerName" => $route->controllerName,
                 "action" => $route->action,
-                "neededPermission" => $route->neededPermission
+                "neededPermission" => $route->neededPermission,
+                "dev" => $route->dev
             ];
         }
     }
