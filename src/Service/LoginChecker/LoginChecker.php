@@ -3,6 +3,7 @@
 namespace src\Service\LoginChecker;
 
 use Medoo\Medoo;
+use src\Models\UserModel\UserModel;
 use src\Service\Redirect\Redirect;
 use src\Structure\Database\Database;
 
@@ -56,8 +57,16 @@ class LoginChecker
 
 
                 if (password_verify($this->password, $userData['password'])) {
-                    $this->setUID($userData['id']);
-                    $this->userId = $userData['id'];
+                    /** @var UserModel $user */
+                    $user = UserModel::getInstance();
+                    $user->read($userData['id']);
+
+                    if ($user->getStatus() === 1) {
+                        $this->setUID($userData['id']);
+                        $this->userId = $userData['id'];
+                    } else {
+                        echo 'Account is Disabled';
+                    }
                 } else {
                     echo 'wrong password';
                 }
@@ -79,6 +88,18 @@ class LoginChecker
         if (!isset($_COOKIE['UID'])) {
             if ($_SERVER['REQUEST_URI'] !== "/login") {
                 Redirect::to("/login");
+            }
+        }
+    }
+
+    public static function isLoggedInAndDisabled(): void
+    {
+        if (isset($_COOKIE['UID'])) {
+            /** @var UserModel $user */
+            $user = UserModel::getInstance();
+            $user->read($_COOKIE['UID']);
+            if ($user->getStatus() === 0) {
+                Redirect::to("/logout");
             }
         }
     }

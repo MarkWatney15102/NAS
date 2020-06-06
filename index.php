@@ -2,6 +2,7 @@
 require $_SERVER['DOCUMENT_ROOT'] . "/autoloader.php";
 
 use config\Config\Config;
+use src\Service\LoginChecker\LoginChecker;
 use src\Structure\Heading\Heading\Heading;
 use src\Structure\Routing\Routing;
 use src\Structure\Header\Header;
@@ -27,6 +28,8 @@ if (!Routing::checkApiCall()) { ?>
 
             $routing = new Routing($config->getRoutes());
             $routing->rout();
+
+            LoginChecker::isLoggedInAndDisabled();
 
         ?>
         </body>
